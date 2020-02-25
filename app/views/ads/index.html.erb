@@ -1,0 +1,12 @@
+<%= 'No ads' if @ads.empty? %>
+
+<section class="section">
+  <div class="container">
+    <% @ads.each_slice(3) do |ads|%>
+      <div class="columns">
+        <%= render ads%>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</section>
