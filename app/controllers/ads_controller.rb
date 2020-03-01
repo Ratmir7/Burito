@@ -2,11 +2,16 @@ class AdsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :create, :update]
 
   def index
+    # if user_signed_in? 
+    #   @ads = current_user.ads.all 
+    # else
+    #   @ads = Ad.all
+    # end
     @ads = Ad.all
   end
 
   def new
-    @ad = Ad.new
+    @ad = current_user.ads.build
   end
 
   def show
@@ -14,7 +19,7 @@ class AdsController < ApplicationController
   end
 
   def create
-    @ad = Ad.new(ad_params)
+    @ad = current_user.ads.build(ad_params)
     if @ad.save
       redirect_to @ad
     else

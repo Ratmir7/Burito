@@ -35,15 +35,22 @@
           <a class="navbar-item" href = <%= ads_path %>>
             ALL
           </a>
+          <% if user_signed_in? %>
           <a class="navbar-item" href = <%= new_ad_path %>>
             ADD NEW
           </a>
+          <% end %>
         </div>
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
+            <% if user_signed_in? %>
+              <%= link_to current_user.name, edit_user_registration_path, class:"button is-text" %>
+              <%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"button is-dark" %>
+            <% else %>
               <%= link_to "Sign Up", new_user_registration_path, class:"button is-primary" %>
               <%= link_to "Log in", new_user_session_path, class:"button is-light" %>
+            <% end %>
             </div>
           </div>
         </div>

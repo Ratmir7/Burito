@@ -21,13 +21,18 @@
             <p class="subtitle is-6">Price: <%= ad.price %></p>
           </div>
           <div class="media-right">
-            <%= link_to "Edit", edit_ad_path(ad) %> </br>
-            <%= link_to "Delete", ad_path(ad), method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %>
+            <% if user_signed_in? %>
+              <% if current_user == ad.user %>
+                <%= link_to "Edit", edit_ad_path(ad) %> </br>
+                <%= link_to "Delete", ad_path(ad), method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %>
+              <% end %>
+          <% end %>
           </div>
         </div>
         <div class="content">
           <p><%= ad.body %></p>
           <%= verbose_date(ad.created_at) %>
+          <p>By <%= ad.user.name %></p>
         </div>
       </div>
     </div>
