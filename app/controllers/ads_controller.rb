@@ -10,6 +10,10 @@ class AdsController < ApplicationController
     @ads = Ad.all
   end
 
+  def user_ads
+    @ads = current_user.ads.all if user_signed_in? 
+  end
+
   def new
     @ad = current_user.ads.build
   end

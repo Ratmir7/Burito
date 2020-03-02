@@ -33,11 +33,14 @@
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
           <a class="navbar-item" href = <%= ads_path %>>
-            ALL
+            All ads
           </a>
           <% if user_signed_in? %>
           <a class="navbar-item" href = <%= new_ad_path %>>
-            ADD NEW
+            New ad
+          </a>
+          <a class="navbar-item" href = <%= user_ads_path %>>
+            My ads
           </a>
           <% end %>
         </div>

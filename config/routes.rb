@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   root to: "ads#index"
 
   resources :ads
+  get '/myads', to: 'ads#user_ads', as: :user_ads
 end
