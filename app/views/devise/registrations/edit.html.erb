@@ -18,6 +18,11 @@
                 hint: "we need your current password to confirm your changes",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
+    <% if resource.avatar.attached? %>
+      <%= image_tag resource.avatar.variant(resize_to_limit: [100, 100]) %>
+    <% end %>
+    <%= f.input :avatar,
+                required: false %>
   </div>
   <div class="form-actions">
     <%= f.button :submit, "Update" %>

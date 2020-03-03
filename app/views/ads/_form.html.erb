@@ -16,11 +16,14 @@
           <%= f.input :price, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
         </div>
       </div>
+      <% if @ad.image.attached? %>
+        <%= image_tag @ad.image %>
+      <% end %>
       <div class="field">
         <div class="file">
-            <span class="file-cta">
-              <%= f.input :image, label: "Load file", input_html: { class: "file-input", type: "file" }, wrapper: false, label_html: { class: "file-label" } %>
-            </span>  
+          <span class="file-cta">
+            <%= f.input :image, label: "Load file", input_html: { class: "file-input", type: "file" }, wrapper: false, label_html: { class: "file-label" } %>
+          </span>
         </div>
       </div>
       <div class="field">

@@ -49,12 +49,21 @@
           </div>
           <div class="field">
             <div class="control">
-              <%= f.button :submit, "Sign up", class:"button is-primary" %>
+              <%= f.input :avatar,
+                label_html: { class: "label"},
+                wrapper:false,
+                input_html: { class: "input" } %>
             </div>
           </div>
-        <% end %>
-        <%= render "devise/shared/links" %>
-      </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <%= f.button :submit, "Sign up", class:"button is-primary" %>
+          </div>
+        </div>
+      <% end %>
+      <%= render "devise/shared/links" %>
     </div>
   </div>
+</div>
 </section>
