@@ -2,11 +2,6 @@ class AdsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :create, :update]
 
   def index
-    # if user_signed_in? 
-    #   @ads = current_user.ads.all 
-    # else
-    #   @ads = Ad.all
-    # end
     @ads = Ad.all
   end
 
@@ -16,6 +11,7 @@ class AdsController < ApplicationController
 
   def new
     @ad = current_user.ads.build
+    # @ad.images.build
   end
 
   def show
@@ -23,7 +19,10 @@ class AdsController < ApplicationController
   end
 
   def create
-    @ad = current_user.ads.build(ad_params)
+    # @ad = current_user.ads.build(ad_params.except(:images))
+    @ad = current_user.ads.build(ad_params)    
+    # @ad = current_user.ads.create!(ad_params)
+
     if @ad.save
       redirect_to @ad
     else
@@ -54,7 +53,7 @@ class AdsController < ApplicationController
   private
 
   def ad_params
-    params.require(:ad).permit(:title, :body, :price, :image)
+    params.require(:ad).permit(:title, :body, :price, images: [])
   end
 
 end
